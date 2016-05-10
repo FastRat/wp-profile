@@ -4,6 +4,10 @@ if ( ! function_exists( 'wp_handle_upload' ) ) {
     require_once( ABSPATH . 'wp-admin/includes/file.php' );
 }
 
+function getDataURI($image, $mime = '') {
+    return 'data: '.(function_exists('mime_content_type') ? mime_content_type($image) : $mime).';base64,'.base64_encode(file_get_contents($image));
+}
+
 $uploadedfile = $_FILES['file'];
 
 $upload_overrides = array( 'test_form' => false );
@@ -31,14 +35,14 @@ if ( $movefile && ! isset( $movefile['error'] ) ) {
         
             $wpdb->insert( $prefix.'user_extends', [
                 'userid' => $id,
-                'picture' => $url
+                'picture' => getDataURI($url),
             ]);
         }
         
         
-        $data = json_decode(file_get_contents(__DIR__ . '/data.txt'), true);
+        $data = unserialize(file_get_contents(__DIR__ . '/data.txt'));
         $data[$id] = $url;   
-        file_put_contents(__DIR__ . '/data.txt', json_encode($data));
+        file_put_contents(__DIR__ . '/data.txt', serialize($data));
     }
     ?>
 

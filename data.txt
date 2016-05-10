@@ -1,1 +1,1 @@
-{"1":"http:\/\/localhost\/wordpress\/wp-content\/uploads\/2016\/05\/IMG_20160117_20304015-300x300.jpg"}
+a:1:{i:1;s:87:"http://localhost/wordpress/wp-content/uploads/2016/05/IMG_20160117_20304022-300x300.jpg";}
