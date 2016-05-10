@@ -9,7 +9,14 @@
         $url = $wpdb->get_var('SELECT picture FROM ' . $prefix.'user_extends' . ' WHERE userid = ' . $id );
                 
         if ( empty($url)){
-             echo get_avatar(get_the_author_meta('user_mail') );
+            $data = json_decode(file_get_contents(__DIR__ . '/data.txt'), true);
+            
+            if ( isset( $data[$id]) ) {
+                echo "<img src\"{$data[$id]}\" />"; 
+            } else {
+                echo get_avatar(get_the_author_meta('user_mail') );
+            }
+           
         }  else {      
     ?>
     <img src="<?php echo $url; ?>" />

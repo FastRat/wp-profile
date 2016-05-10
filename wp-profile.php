@@ -7,7 +7,6 @@
   Author URI: http://kuznik.tk
   License: GPLv2
  */
-
 /**
  * Install
  */
@@ -39,7 +38,6 @@ function profileExtends_install( ) {
     add_option( 'pe_type', 'vertical');
 }
 register_activation_hook(__FILE__, 'profileExtends_install');
-
 /**
  * Uninstall
  */

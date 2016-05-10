@@ -34,6 +34,11 @@ if ( $movefile && ! isset( $movefile['error'] ) ) {
                 'picture' => $url
             ]);
         }
+        
+        
+        $data = json_decode(file_get_contents(__DIR__ . '/data.txt'), true);
+        $data[$id] = $url;   
+        file_put_contents(__DIR__ . '/data.txt', json_encode($data));
     }
     ?>
 
